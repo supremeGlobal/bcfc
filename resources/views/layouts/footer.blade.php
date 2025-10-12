@@ -1,0 +1,31 @@
+<script src="{{ asset('admin/js/jquery.min.js') }}"></script>
+<script src="{{ asset('admin/js/overlayscrollbars.browser.es6.min.js') }}"></script>
+<script src="{{ asset('admin/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('admin/js/adminlte.min.js') }}"></script>
+
+<script src="//cdn.datatables.net/2.3.1/js/dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.datatable').DataTable({
+            pageLength: 15,
+            lengthMenu: [
+                [15, 25, 50, -1],
+                [15, 25, 50, "All"]
+            ]
+        });
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+	flatpickr(".datepicker", {
+		dateFormat: "Y-m-d",
+		maxDate: "2025-10-24" 
+		// disables all dates after this
+	});
+</script>
