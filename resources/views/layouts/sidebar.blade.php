@@ -13,18 +13,25 @@
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">                
                 <li class="nav-item">
                     <a href="{{ url('students') }}"
-                        class="nav-link {{ request()->is('admin/users') ? 'active' : '' }}">
-                        <i class="nav-icon fa-regular {{ request()->is('admin/users') ? $check : 'fa-circle text-danger' }}"></i>
+                        class="nav-link {{ request()->is('students') ? 'active' : '' }}">
+                        <i class="nav-icon fa-regular {{ request()->is('students') ? $check : 'fa-circle text-danger' }}"></i>
                         <p>Total student</p>
                     </a>
                 </li>
-				<li class="nav-item">
-                    <a href="{{ url('admin/gallery') }}"
-                        class="nav-link {{ request()->is('admin/gallery') ? 'active' : '' }}">
-                        <i class="nav-icon fa-regular {{ request()->is('admin/gallery') ? $check : 'fa-circle text-primary' }}"></i>
-                        <p>Photo Gallery</p>
-                    </a>
-                </li>
+
+				@php
+					$groups = ['A', 'B', 'C', 'D'];
+				@endphp
+				
+				@foreach ($groups as $group)
+					<li class="nav-item">
+						<a href="{{ url('students/' . strtolower($group)) }}"
+							class="nav-link {{ request()->is('students/' . strtolower($group)) ? 'active' : '' }}">
+							<i class="nav-icon fa-regular {{ request()->is('students/' . strtolower($group)) ? 'fa-check-circle text-success' : 'fa-circle text-danger' }}"></i>
+							<p>Group {{ $group }}</p>
+						</a>
+					</li>
+				@endforeach
             </ul>
         </nav>
     </div>

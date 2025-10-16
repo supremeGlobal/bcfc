@@ -160,7 +160,7 @@ class HomeController extends Controller
 
 		return view('search', $data);
 	}
-		
+
 	public function dashboard()
 	{
 		$data['types'] = [
@@ -172,19 +172,31 @@ class HomeController extends Controller
 			[
 				'link'  => url('users'),
 				'value' => Student::where('group', 'B')->count(),
-				'title' => 'Total A group'
+				'title' => 'Total B group'
 			],
 			[
 				'link'  => url('users'),
 				'value' => Student::where('group', 'C')->count(),
-				'title' => 'Total A group'
+				'title' => 'Total C group'
 			],
 			[
 				'link'  => url('users'),
 				'value' => Student::where('group', 'D')->count(),
-				'title' => 'Total A group'
+				'title' => 'Total D group'
 			],
 		];
 		return view('dashboard', $data);
+	}
+
+	public function studentList()
+	{
+		$data['students'] = Student::all();
+		return view('students', $data);
+	}
+
+	public function studentGroup($group)
+	{
+		$data['students'] = Student::where('group', strtoupper($group))->get();
+		return view('students', $data);
 	}
 }

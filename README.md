@@ -1,6 +1,11 @@
-### Project route
-- Landing page added
-- Admin UI added 
+## Project structure
+### Front side
+- Student application
+- Application preview
+- Student search
+- Application download
 
-- php artisan db:seed
-- php artisan migrate:fresh --seed
+### Admin side
+- Dashboard Group wise count
+- Total student list
+- Single group wise student view
