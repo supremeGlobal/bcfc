@@ -13,49 +13,49 @@
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">Student name*</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="name" autofocus>
+                                <input type="text" class="form-control" name="name" autofocus required>
                             </div>
                         </div>
 
 						<div class="row mb-3">
                             <label for="father" class="col-md-4 col-form-label text-md-end">Father's name</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="father" autofocus>
+                                <input type="text" class="form-control" name="father" autofocus required>
                             </div>
                         </div>
 
 						<div class="row mb-3">
                             <label for="mother" class="col-md-4 col-form-label text-md-end">Mother's name</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="mother" autofocus>
+                                <input type="text" class="form-control" name="mother" autofocus required>
                             </div>
                         </div>
 
 						<div class="row mb-3">
                             <label for="dob" class="col-md-4 col-form-label text-md-end">Date of birth*</label>
                             <div class="col-md-8">
-                                <input type="date" class="form-control datepicker" name="dob" autofocus>
+                                <input type="date" class="form-control datepicker" name="dob" autocomplete="off" required>
                             </div>
                         </div>
 
 						<div class="row mb-3">
                             <label for="school" class="col-md-4 col-form-label text-md-end">School / Institute</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="school" autofocus>
+                                <input type="text" class="form-control" name="school" autofocus required>
                             </div>
                         </div>
 
 						<div class="row mb-3">
                             <label for="mobile" class="col-md-4 col-form-label text-md-end">Mobile number*</label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" name="mobile" autofocus>
+                                <input type="number" class="form-control" name="mobile" autofocus required>
                             </div>
                         </div>
 
 						<div class="row mb-3">
 							<label for="image" class="col-md-4 col-form-label text-md-end">Student's photo*</label>
 							<div class="col-md-8">
-								<input type="file" class="form-control" name="image" autofocus>
+								<input type="file" class="form-control" name="image" autofocus required>
 							</div>
 						</div>
 

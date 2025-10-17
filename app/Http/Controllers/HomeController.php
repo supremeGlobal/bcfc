@@ -165,24 +165,24 @@ class HomeController extends Controller
 	{
 		$data['types'] = [
 			[
-				'link'  => url('users'),
+				'link'  => url('students/a'),
 				'value' => Student::where('group', 'A')->count(),
-				'title' => 'Total A group'
+				'title' => 'A group'
 			],
 			[
-				'link'  => url('users'),
+				'link'  => url('students/b'),
 				'value' => Student::where('group', 'B')->count(),
-				'title' => 'Total B group'
+				'title' => 'B group'
 			],
 			[
-				'link'  => url('users'),
+				'link'  => url('students/c'),
 				'value' => Student::where('group', 'C')->count(),
-				'title' => 'Total C group'
+				'title' => 'C group'
 			],
 			[
-				'link'  => url('users'),
+				'link'  => url('students/d'),
 				'value' => Student::where('group', 'D')->count(),
-				'title' => 'Total D group'
+				'title' => 'D group'
 			],
 		];
 		return view('dashboard', $data);

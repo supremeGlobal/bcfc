@@ -6,12 +6,13 @@
 <script src="//cdn.datatables.net/2.3.1/js/dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('.table').DataTable({
+        $('.dataTables').DataTable({
             pageLength: 15,
             lengthMenu: [
                 [15, 25, 50, -1],
                 [15, 25, 50, "All"]
-            ]
+            ],
+			order: [[0, 'desc']]
         });
     });
 </script>
@@ -25,7 +26,7 @@
 <script>
 	flatpickr(".datepicker", {
 		dateFormat: "Y-m-d",
-		maxDate: "2025-10-24" 
-		// disables all dates after this
+		maxDate: "2025-10-24", 
+		allowInput: true
 	});
 </script>

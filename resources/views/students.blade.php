@@ -8,9 +8,9 @@
                 <div class="card">
                     <h4 class="card-header bg-success text-center p-1 mx-1 mt-1 text-light">Student list ({{$students->count()}})</h4>
                     <div class="card-body px-1 py-0">
-                        <table class="table table-bordered align-middle text-center">
+                        <table class="table table-bordered align-middle text-center dataTables">
                             <thead>
-								<th class="d-none"></th>
+								{{-- <th class="d-none"></th> --}}
                                 <th width="3%">Serial</th>
                                 <th>Reg No.</th>
                                 <th>Photo</th>
@@ -19,9 +19,10 @@
                                 <th>Date of birth</th>
                             </thead>
                             <tbody>
-								@foreach ($students->sortByDesc('id')->values() as $key => $item)
+								{{-- @foreach ($students->sortByDesc('id')->values() as $key => $item) --}}
+								@foreach ($students as $key => $item)
 									<tr>
-										<td class="d-none"></td>
+										{{-- <td class="d-none"></td> --}}
                                         <td width="30">{!! $item->id !!}</td>
                                         <td>{!! $item->reg_number !!}</td>
                                        	@php
