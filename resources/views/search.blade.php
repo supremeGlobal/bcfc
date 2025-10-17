@@ -10,7 +10,7 @@
 						@if ($students->isEmpty())
 							<div class="alert alert-warning">No student found with this number.</div>
 						@else
-							<table class="table table-bordered table-striped mt-2 text-center">
+							<table class="table table-bordered table-striped text-center">
 								<thead>
 									<tr class="bg-info">
 										<th>Reg no</th>
@@ -26,7 +26,7 @@
 											<td>{{ $student->reg_number }}</td>
 											<td>{{ $student->name }}</td>
 											<td>{{ $student->father }}</td>
-											<td class="d-none d-md-table-cell">{{ \Carbon\Carbon::parse($student->dob)->format('F-d, Y') }}</td>
+											<td class="d-none d-md-table-cell">{{ $student->dob->format('F-d, Y') }}</td>
 											<td>
 												<a href="{{ route('student.print', $student->id) }}" target="_blank" class="btn btn-sm btn-outline-primary">
 													<i class="bi bi-printer pe-2"></i> Print

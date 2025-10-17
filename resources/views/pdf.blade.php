@@ -250,15 +250,6 @@
         </tr>
     </table>
 
-	{{-- <div class="group-reminder" style="margin-top: 15px; font-size: 11.5px;">
-		@foreach($groups as $group => $date)
-			<strong>Group {{ $group }}: Upto {{ \Carbon\Carbon::parse($date)->format('d/m/Y') }}</strong>
-			@if (!$loop->last)
-				| 
-			@endif
-		@endforeach
-	</div> --}}
-
 	<table class="group-range" style="width: 100%; font-size: 12px; margin-top: 15px; border-collapse: collapse; text-align: center">
 		<tr>
 			<td style="width: 50%; padding: 5px;">
@@ -296,8 +287,8 @@
 
     <!-- Footer -->
     <div class="footer">
-        Thank you for participating in the Children Art Competition 2025<br>
-        Printed on: {{ now()->format('F-d, Y') }}
+        Thank you for participating in the Bangladesh Children Art Competition-2025<br>
+		Printed on: {{ now()->format('F-d, Y (h:i A)') }}
     </div>
 </body>
 

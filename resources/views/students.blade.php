@@ -16,13 +16,14 @@
                     <div class="card-body px-1 py-0">
                         <table class="table table-bordered align-middle text-center dataTables">
                             <thead>
-                                <th idth="3%">SL</th>
+                                <th width="3%">SL</th>
                                 <th>Reg No.</th>
                                 <th>Photo</th>
                                 <th>Name</th>
                                 <th>Father name</th>
+                                <th>Mobile</th>
                                 <th>Date of birth</th>
-                                <th>Print</th>
+                                <th width="10%">Print</th>
                             </thead>
                             <tbody>
 								@foreach ($students as $key => $item)
@@ -40,10 +41,11 @@
 										</td>
                                         <td>{!! $item->name !!}</td>	
                                         <td>{!! $item->father !!}</td>	
-                                        <td>{!! $item->dob !!}</td>	
+                                        <td>{!! $item->mobile !!}</td>	
+                                        <td>{!! $item->dob->format('F-d, Y') !!}</td>	
 										<td>
-											<a href="{{ route('student.print', $item->id) }}" target="_blank" class="btn btn-primary">
-												<i class="bi bi-printer pe-2"></i> Print Registration
+											<a href="{{ route('student.print', $item->id) }}" target="_blank" class="btn btn-outline-primary">
+												<i class="bi bi-printer pe-2"></i> Print
 											</a>
 										</td>
                                     </tr>
