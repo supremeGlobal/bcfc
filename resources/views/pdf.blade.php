@@ -168,7 +168,7 @@
         <table class="header-table" width="100%">
             <tr>
                 <td style="width: 100px; padding: 0;">
-                    <img src="{{ public_path('uploads/bcfc.png') }}" class="logo">
+                    <img src="{{ public_path('default/bcfc.png') }}" class="logo">
                 </td>
 
                 <td style="padding-left: 10px; text-align: center;">
@@ -187,7 +187,7 @@
     <table class="top-section">
         <tr>
             <td width="100">
-                <img src="{{ public_path($student->image ?? 'uploads/profile.jpg') }}" class="photo">
+                <img src="{{ public_path($student->image ?? 'default/profile.png') }}" class="photo">
             </td>
             <td align="center">
                 <div class="title-top">

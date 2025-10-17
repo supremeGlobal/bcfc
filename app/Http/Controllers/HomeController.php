@@ -7,6 +7,7 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Traits\HandlesImageUpload;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -21,7 +22,12 @@ class HomeController extends Controller
 	public function saveRegister(Request $request)
 	{
 		$validator = Validator::make($request->all(), [
-			'name'        => ['required', 'string', 'max:255'],
+			'name'        => [
+				'required', 'string', 'max:255',
+				Rule::unique('students')->where(function ($query) use ($request) {
+					return $query->where('father', $request->father);
+				}),
+			],
 			'father'      => ['required', 'string', 'max:255'],
 			'mother'      => ['required', 'string', 'max:255'],
 			'dob'         => ['required', 'date'],

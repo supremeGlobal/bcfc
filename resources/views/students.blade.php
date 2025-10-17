@@ -32,7 +32,7 @@
                                        	@php
 											$imagePath = $item->image && file_exists(public_path($item->image))
 												? asset($item->image)
-												: asset('uploads/profile.jpg');
+												: asset('default/profile.png');
 										@endphp
 
 										<td class="center">
