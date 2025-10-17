@@ -27,8 +27,9 @@ class HomeController extends Controller
 			'dob'         => ['required', 'date'],
 			'school'      => ['required', 'string', 'max:255'],
 			'mobile'      => ['required', 'string', 'max:20'],
-			'image'       => ['file', 'mimes:jpg,jpeg,png,pdf', 'max:5120'],
-			'certificate' => ['file', 'mimes:jpg,jpeg,png,pdf', 'max:5120'],
+
+			'image'       => ['nullable', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:5120'],
+			'certificate' => ['nullable', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:5120'],
 		]);
 
 		if ($validator->fails()) {
@@ -167,22 +168,27 @@ class HomeController extends Controller
 			[
 				'link'  => url('students/a'),
 				'value' => Student::where('group', 'A')->count(),
-				'title' => 'A group'
+				'title' => 'Group: A'
 			],
 			[
 				'link'  => url('students/b'),
 				'value' => Student::where('group', 'B')->count(),
-				'title' => 'B group'
+				'title' => 'Group: B'
 			],
 			[
 				'link'  => url('students/c'),
 				'value' => Student::where('group', 'C')->count(),
-				'title' => 'C group'
+				'title' => 'Group: C'
 			],
 			[
 				'link'  => url('students/d'),
 				'value' => Student::where('group', 'D')->count(),
-				'title' => 'D group'
+				'title' => 'Group: D'
+			],
+			[
+				'link'  => url('students'),
+				'value' => Student::all()->count(),
+				'title' => 'Total'
 			],
 		];
 		return view('dashboard', $data);

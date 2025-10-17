@@ -57,7 +57,7 @@
         /* Top Section */
         .top-section {
             width: 100%;
-            margin: 15px 0 20px;
+            margin: 15px 0;
         }
 
         .photo {
@@ -187,7 +187,7 @@
     <table class="top-section">
         <tr>
             <td width="100">
-                <img src="{{ public_path($student->image ?? 'uploads/profile.png') }}" class="photo">
+                <img src="{{ public_path($student->image ?? 'uploads/profile.jpg') }}" class="photo">
             </td>
             <td align="center">
                 <div class="title-top">
