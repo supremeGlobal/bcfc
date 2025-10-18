@@ -1,8 +1,7 @@
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
     <div class="sidebar-brand">
         <a href="{{ url('result') }}" class="brand-link">
-            {{-- <img src="{{ asset('images/supreme.png') }}" alt="Company logo" class="brand-image opacity-75 shadow text-bg-light"> --}}
-            <span class="brand-text fw-light">BCFC</span>
+            <span class="brand-text fw-light">BCFC: Dashboard</span>
         </a>
     </div>
 	@php
@@ -27,7 +26,7 @@
 					<li class="nav-item">
 						<a href="{{ url('students/' . strtolower($group)) }}"
 							class="nav-link {{ request()->is('students/' . strtolower($group)) ? 'active' : '' }}">
-							<i class="nav-icon fa-regular {{ request()->is('students/' . strtolower($group)) ? 'fa-check-circle text-success' : 'fa-circle text-danger' }}"></i>
+							<i class="nav-icon fa-regular {{ request()->is('students/' . strtolower($group)) ? $check : 'fa-circle text-info' }}"></i>
 							<p>Group {{ $group }}</p>
 						</a>
 					</li>

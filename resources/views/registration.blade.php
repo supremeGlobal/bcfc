@@ -3,15 +3,15 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6 mt-4">
+            <div class="col-md-6 mt-3 p-0">
 				<div id="registration-form" class="card">
-                    <h4 class="card-header py-2 text-center">{{ __('Registration form') }}</h4>
+                    <h4 class="card-header py-2 text-center fw-bold" style="background-color: whitesmoke; color: #333;">Registration form</h4>
                     <div class="card-body">
                         <form method="POST" action="{{ route('register.save') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="name" class="col-md-4 col-form-label text-md-end">Student name</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-end fw-bold">Student name</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}"
                                         autofocus required>
@@ -19,7 +19,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="father" class="col-md-4 col-form-label text-md-end">Father's name</label>
+                                <label for="father" class="col-md-4 col-form-label text-md-end fw-bold">Father's name</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="father" value="{{ old('father') }}"
                                         autofocus required>
@@ -27,7 +27,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="mother" class="col-md-4 col-form-label text-md-end">Mother's name</label>
+                                <label for="mother" class="col-md-4 col-form-label text-md-end fw-bold">Mother's name</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="mother" value="{{ old('mother') }}"
                                         autofocus required>
@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="dob" class="col-md-4 col-form-label text-md-end">Date of birth</label>
+                                <label for="dob" class="col-md-4 col-form-label text-md-end fw-bold">Date of birth</label>
                                 <div class="col-md-8">
                                     <input type="date" class="form-control datepicker" name="dob"
                                         value="{{ old('dob') }}" autocomplete="off" required>
@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="school" class="col-md-4 col-form-label text-md-end">School / Institute</label>
+                                <label for="school" class="col-md-4 col-form-label text-md-end fw-bold">School / Institute</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="school" value="{{ old('school') }}"
                                         autofocus required>
@@ -51,7 +51,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="mobile" class="col-md-4 col-form-label text-md-end">Mobile number</label>
+                                <label for="mobile" class="col-md-4 col-form-label text-md-end fw-bold">Mobile number</label>
                                 <div class="col-md-8">
                                     <input type="number" class="form-control" name="mobile" value="{{ old('mobile') }}"
                                         autofocus required>
@@ -59,15 +59,14 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="image" class="col-md-4 col-form-label text-md-end">Student's photo</label>
+                                <label for="image" class="col-md-4 col-form-label text-md-end fw-bold">Student's photo</label>
                                 <div class="col-md-8">
                                     <input type="file" class="form-control" name="image" autofocus>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="certificate" class="col-md-4 col-form-label text-md-end">Birth
-                                    certificate</label>
+                                <label for="certificate" class="col-md-4 col-form-label text-md-end fw-bold">Birth certificate</label>
                                 <div class="col-md-8">
                                     <input type="file" class="form-control" name="certificate" autofocus required>
                                 </div>

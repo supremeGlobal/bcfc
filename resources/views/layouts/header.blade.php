@@ -2,7 +2,9 @@
     <div class="container-fluid">
         <!-- Left: Home -->
         <a class="navbar-brand" href="{{ url('/') }}">
-            <h4 class="mb-0">Home Page</h4>
+            <h4 class="mb-0">
+				<i class="fa-solid fa-house"></i> Home
+			</h4>
         </a>
 
         <!-- Mobile Toggle -->
