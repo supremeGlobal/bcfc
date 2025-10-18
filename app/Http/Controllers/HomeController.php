@@ -23,7 +23,9 @@ class HomeController extends Controller
 	{
 		$validator = Validator::make($request->all(), [
 			'name'        => [
-				'required', 'string', 'max:255',
+				'required',
+				'string',
+				'max:255',
 				Rule::unique('students')->where(function ($query) use ($request) {
 					return $query->where('father', $request->father);
 				}),
@@ -120,7 +122,7 @@ class HomeController extends Controller
 
 	public function printPDF($id)
 	{
-		$student = Student::findOrFail($id);		
+		$student = Student::findOrFail($id);
 		$pdf = Pdf::loadView('pdf', ['student' => $student])->setPaper('a4', 'portrait');
 
 		return $pdf->stream("{$student->reg_number}.pdf");
@@ -194,44 +196,27 @@ class HomeController extends Controller
 		return view('dashboard', $data);
 	}
 
-	/*
-	public function studentList()
+	public function students($group = null)
 	{
-		$data['students'] = Student::all();
-		return view('students', $data);
-	}
-	*/
-	public function studentList()
-	{
-		$students = Student::all()->map(function ($student) {
-			// --- DOB & Age ---
+		$students = Student::query();
+
+		if ($group) {
+			$students->where('group', strtoupper($group));
+		}
+
+		$students = $students->get()->map(function ($student) {
 			$dob = Carbon::parse($student->dob);
 			$diff = $dob->diff(Carbon::parse('2025-10-24'));
 			$student->dob_formatted = $dob->format('F-d, Y');
-			$student->age = [
-				'y' => $diff->y,
-				'm' => $diff->m,
-				'd' => $diff->d,
-			];
-
-			// --- Profile Image ---
+			$student->age = ['y' => $diff->y, 'm' => $diff->m, 'd' => $diff->d];
 			$student->image_url = $student->image ? asset($student->image) : asset('default/profile.png');
-
-			// --- Certificate ---
 			$student->certificate_url = $student->certificate ? asset($student->certificate) : null;
 			$ext = $student->certificate_url ? strtolower(pathinfo($student->certificate_url, PATHINFO_EXTENSION)) : null;
 			$student->certificate_is_image = in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'webp']);
 			$student->certificate_extension = $ext;
-
 			return $student;
 		});
 
-		return view('students', ['students' => $students]);
-	}
-
-	public function studentGroup($group)
-	{
-		$data['students'] = Student::where('group', strtoupper($group))->get();
-		return view('students', $data);
+		return view('students', compact('students'));
 	}
 }

@@ -17,8 +17,8 @@ Route::controller(HomeController::class)->group(function () {
 	
 	// Admin side
 	Route::get('result', 'dashboard');
-	Route::get('students', 'studentList');
-	Route::get('students/{group}', 'studentGroup');
+
+	Route::get('students/{group?}', 'students');
 });
 
 
