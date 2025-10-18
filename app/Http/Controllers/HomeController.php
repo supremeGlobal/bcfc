@@ -19,7 +19,7 @@ class HomeController extends Controller
 		return view('registration');
 	}
 
-	public function saveRegister(Request $request)
+	public function saveRegistration(Request $request)
 	{
 		$validator = Validator::make($request->all(), [
 			'name'        => [
@@ -101,12 +101,10 @@ class HomeController extends Controller
 		$student->save();
 
 		if ($request->hasFile('image')) {
-			// $student->image = $this->uploadFile($request->file('image'), "student_{$student->id}_photo");
 			$student->image = $this->uploadFile($request->file('image'), "{$regNumber}_photo");
 		}
 
 		if ($request->hasFile('certificate')) {
-			// $student->certificate = $this->uploadFile($request->file('certificate'), "student_{$student->id}_certificate");
 			$student->certificate = $this->uploadFile($request->file('certificate'), "{$regNumber}_certificate");
 		}
 
@@ -114,7 +112,7 @@ class HomeController extends Controller
 		return redirect()->route('student.success', ['id' => $student->id])->with('success', "Student registered successfully! Reg No: {$regNumber}");
 	}
 
-	public function registerSuccess($id)
+	public function registrationSuccess($id)
 	{
 		$student = Student::findOrFail($id);
 		return view('success', compact('student'));
@@ -122,17 +120,10 @@ class HomeController extends Controller
 
 	public function printPDF($id)
 	{
-		$student = Student::findOrFail($id);
-		$groups = [
-			'A' => '2020-10-24',
-			'B' => '2018-10-24',
-			'C' => '2016-10-24',
-			'D' => '2011-10-24',
-		];
-		$pdf = Pdf::loadView('pdf', ['student' => $student, 'groups' => $groups])
-			->setPaper('a4', 'portrait');
+		$student = Student::findOrFail($id);		
+		$pdf = Pdf::loadView('pdf', ['student' => $student])->setPaper('a4', 'portrait');
 
-		return $pdf->stream("student_{$student->id}.pdf");
+		return $pdf->stream("{$student->reg_number}.pdf");
 	}
 
 	public function search()
@@ -170,6 +161,7 @@ class HomeController extends Controller
 		return view('search', $data);
 	}
 
+	// Admin site
 	public function dashboard()
 	{
 		$data['types'] = [
@@ -202,10 +194,39 @@ class HomeController extends Controller
 		return view('dashboard', $data);
 	}
 
+	/*
 	public function studentList()
 	{
 		$data['students'] = Student::all();
 		return view('students', $data);
+	}
+	*/
+	public function studentList()
+	{
+		$students = Student::all()->map(function ($student) {
+			// --- DOB & Age ---
+			$dob = Carbon::parse($student->dob);
+			$diff = $dob->diff(Carbon::parse('2025-10-24'));
+			$student->dob_formatted = $dob->format('F-d, Y');
+			$student->age = [
+				'y' => $diff->y,
+				'm' => $diff->m,
+				'd' => $diff->d,
+			];
+
+			// --- Profile Image ---
+			$student->image_url = $student->image ? asset($student->image) : asset('default/profile.png');
+
+			// --- Certificate ---
+			$student->certificate_url = $student->certificate ? asset($student->certificate) : null;
+			$ext = $student->certificate_url ? strtolower(pathinfo($student->certificate_url, PATHINFO_EXTENSION)) : null;
+			$student->certificate_is_image = in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'webp']);
+			$student->certificate_extension = $ext;
+
+			return $student;
+		});
+
+		return view('students', ['students' => $students]);
 	}
 
 	public function studentGroup($group)

@@ -19,20 +19,20 @@
 	<div class="container center-box mt-4 pb-2 w-50">    
         <table class="table table-bordered">
             <tr>
-                <th>Student Registered:</th>
+                <th>Student name :</th>
                 <td>{{ $student->name }}</td>
             </tr>
 			<tr>
-				<th>Reg No:</th>
+				<th>Reg no :</th>
 				<td>{{ $student->reg_number }}</td>
 			</tr>
 			<tr>
-				<th>Mobile No:</th>
+				<th>Mobile no :</th>
 				<td>{{ $student->mobile }}</td>
 			</tr>
 			<tr>
-				<th>Date of birth:</th>
-				<td>{{ $student->dob }}</td>
+				<th>Date of birth :</th>
+				<td>{{ $student->dob->format('F-d, Y') }}</td>
 			</tr>
 			<tr>
 				<td colspan="2">

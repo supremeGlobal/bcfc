@@ -7,7 +7,7 @@
 				<div id="registration-form" class="card">
                     <h4 class="card-header py-2 text-center fw-bold" style="background-color: whitesmoke; color: #333;">Registration form</h4>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('register.save') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('registration.save') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="row mb-3">
