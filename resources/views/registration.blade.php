@@ -69,7 +69,7 @@
                                 <label for="certificate" class="col-md-4 col-form-label text-md-end">Birth
                                     certificate</label>
                                 <div class="col-md-8">
-                                    <input type="file" class="form-control" name="certificate" autofocus>
+                                    <input type="file" class="form-control" name="certificate" autofocus required>
                                 </div>
                             </div>
 

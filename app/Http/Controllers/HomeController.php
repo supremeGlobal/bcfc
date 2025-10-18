@@ -35,7 +35,7 @@ class HomeController extends Controller
 			'mobile'      => ['required', 'string', 'max:20'],
 
 			'image'       => ['nullable', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:5120'],
-			'certificate' => ['nullable', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:5120'],
+			'certificate' => ['required', 'file', 'mimes:jpg,jpeg,png,pdf', 'max:5120'],
 		]);
 
 		if ($validator->fails()) {
@@ -100,15 +100,17 @@ class HomeController extends Controller
 		$student->reg_number  = $regNumber;
 		$student->save();
 
-		$folder = "student_{$student->id}";
 		if ($request->hasFile('image')) {
-			$student->image = $this->uploadFile($request->file('image'), $folder);
+			// $student->image = $this->uploadFile($request->file('image'), "student_{$student->id}_photo");
+			$student->image = $this->uploadFile($request->file('image'), "{$regNumber}_photo");
 		}
-		if ($request->hasFile('certificate')) {
-			$student->certificate = $this->uploadFile($request->file('certificate'), $folder);
-		}
-		$student->save();
 
+		if ($request->hasFile('certificate')) {
+			// $student->certificate = $this->uploadFile($request->file('certificate'), "student_{$student->id}_certificate");
+			$student->certificate = $this->uploadFile($request->file('certificate'), "{$regNumber}_certificate");
+		}
+
+		$student->save();
 		return redirect()->route('student.success', ['id' => $student->id])->with('success', "Student registered successfully! Reg No: {$regNumber}");
 	}
 
