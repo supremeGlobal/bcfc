@@ -23,15 +23,15 @@
                 </div>
 
                 <!-- Right Search -->
-                <div class="order-2 order-lg-3">
-                    <form method="POST" action="{{ route('search.number') }}" enctype="multipart/form-data" class="d-flex flex-column flex-sm-row align-items-center gap-2 w-100">
-                        @csrf
-                        <input type="number" class="form-control w-100" name="mobile" placeholder="Mobile number" style="max-width: 220px;">
-                        <button type="submit" class="btn btn-primary w-100">
-                            <i class="fa-solid fa-magnifying-glass pe-2"></i> Search Student
-                        </button>
-                    </form>
-                </div>
+				<div class="order-2 order-lg-3 w-100" style="max-width: 400px;">
+					<form method="POST" action="{{ route('search.number') }}" enctype="multipart/form-data" class="d-flex flex-column flex-sm-row flex-lg-row align-items-stretch gap-2 w-100">
+						@csrf
+						<input type="number" class="form-control flex-grow-1" name="mobile" placeholder="Mobile number">
+						<button type="submit" class="btn btn-success w-100">
+							<i class="fa-solid fa-magnifying-glass pe-2"></i> Search Student
+						</button>
+					</form>
+				</div>
             </div>
         </div>
     </div>

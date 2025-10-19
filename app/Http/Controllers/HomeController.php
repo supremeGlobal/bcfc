@@ -36,7 +36,7 @@ class HomeController extends Controller
 			'school'      => ['required', 'string', 'max:255'],
 			'mobile'      => ['required', 'string', 'max:20'],
 
-			'image'       => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp,pdf', 'max:5120'],
+			'image'       => ['nullable', 'file', 'mimes:jpg,jpeg,png,webp', 'max:5120'],
 			'certificate' => ['required', 'file', 'mimes:jpg,jpeg,png,webp,pdf', 'max:5120'],
 		]);
 
