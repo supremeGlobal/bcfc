@@ -23,6 +23,7 @@
 	flatpickr(".datepicker", {
 		dateFormat: "Y-m-d",
 		maxDate: "2025-10-24", 
-		allowInput: true
+		minDate: "2011-10-24",
+		// allowInput: true
 	});
 </script>

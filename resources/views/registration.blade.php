@@ -3,14 +3,13 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-6 mt-3 p-0">
+            <div class="col-md-6 mt-3 p-0">				
 				<div id="registration-form" class="card">
                     <h4 class="card-header py-2 text-center fw-bold" style="background-color: whitesmoke; color: #333;">Registration form</h4>
                     <div class="card-body">
                         <form method="POST" action="{{ route('registration.save') }}" enctype="multipart/form-data">
                             @csrf
-
-                            <div class="row mb-3">
+                            <div class="row mb-2">
                                 <label for="name" class="col-md-4 col-form-label text-md-end fw-bold">Student name</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="name" value="{{ old('name') }}"
@@ -18,7 +17,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-2">
                                 <label for="father" class="col-md-4 col-form-label text-md-end fw-bold">Father's name</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="father" value="{{ old('father') }}"
@@ -26,7 +25,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-2">
                                 <label for="mother" class="col-md-4 col-form-label text-md-end fw-bold">Mother's name</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="mother" value="{{ old('mother') }}"
@@ -34,15 +33,17 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-2">
                                 <label for="dob" class="col-md-4 col-form-label text-md-end fw-bold">Date of birth</label>
                                 <div class="col-md-8">
-                                    <input type="date" class="form-control datepicker" name="dob"
-                                        value="{{ old('dob') }}" autocomplete="off" required>
-                                </div>
+                                    <input type="date" class="form-control datepicker" name="dob" value="{{ old('dob') }}" autocomplete="off" required>
+									<div class="form-text text-muted">
+										Date of birth range (Groups A-D): <strong>24/10/2011</strong> - <strong>24/10/2025</strong>
+									</div>
+								</div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-2">
                                 <label for="school" class="col-md-4 col-form-label text-md-end fw-bold">School / Institute</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" name="school" value="{{ old('school') }}"
@@ -50,7 +51,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-2">
                                 <label for="mobile" class="col-md-4 col-form-label text-md-end fw-bold">Mobile number</label>
                                 <div class="col-md-8">
                                     <input type="number" class="form-control" name="mobile" value="{{ old('mobile') }}"
@@ -58,14 +59,14 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-2">
                                 <label for="image" class="col-md-4 col-form-label text-md-end fw-bold">Student's photo</label>
                                 <div class="col-md-8">
                                     <input type="file" class="form-control" name="image" autofocus>
                                 </div>
                             </div>
 
-                            <div class="row mb-3">
+                            <div class="row mb-2">
                                 <label for="certificate" class="col-md-4 col-form-label text-md-end fw-bold">Birth certificate</label>
                                 <div class="col-md-8">
                                     <input type="file" class="form-control" name="certificate" autofocus required>
