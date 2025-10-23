@@ -26,6 +26,7 @@ return new class extends Migration
 			$table->string('image')->nullable();
 			$table->string('certificate')->nullable();
 
+			$table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }

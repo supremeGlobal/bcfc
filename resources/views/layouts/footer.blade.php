@@ -25,5 +25,6 @@
 		maxDate: "2025-10-24", 
 		minDate: "2011-10-24",
 		// allowInput: true
+		disableMobile: true
 	});
 </script>

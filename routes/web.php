@@ -17,8 +17,8 @@ Route::controller(HomeController::class)->group(function () {
 	
 	// Admin side
 	Route::get('result', 'dashboard');
-
 	Route::get('students/{group?}', 'students');
+	Route::post('/students/{id}/update-status', 'updateStatus')->name('students.updateStatus');
 });
 
 

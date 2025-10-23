@@ -166,33 +166,37 @@ class HomeController extends Controller
 	// Admin site
 	public function dashboard()
 	{
-		$data['types'] = [
-			[
-				'link'  => url('students/a'),
-				'value' => Student::where('group', 'A')->count(),
-				'title' => 'Group: A'
-			],
-			[
-				'link'  => url('students/b'),
-				'value' => Student::where('group', 'B')->count(),
-				'title' => 'Group: B'
-			],
-			[
-				'link'  => url('students/c'),
-				'value' => Student::where('group', 'C')->count(),
-				'title' => 'Group: C'
-			],
-			[
-				'link'  => url('students/d'),
-				'value' => Student::where('group', 'D')->count(),
-				'title' => 'Group: D'
-			],
-			[
-				'link'  => url('students'),
-				'value' => Student::all()->count(),
-				'title' => 'Total'
-			],
+		$groups = ['A', 'B', 'C', 'D'];
+
+		$data['types'] = [];
+
+		foreach ($groups as $group) {
+			$pending  = Student::where('group', $group)->where('status', 'Pending')->count();
+			$accepted = Student::where('group', $group)->where('status', 'Accepted')->count();
+			$rejected = Student::where('group', $group)->where('status', 'Rejected')->count();
+
+			$data['types'][] = [
+				'link'     => url("students/$group"),
+				'title'    => "Group: $group",
+				'pending'  => $pending,
+				'accepted' => $accepted,
+				'rejected' => $rejected,
+			];
+		}
+
+		// Total row
+		$totalPending  = Student::where('status', 'Pending')->count();
+		$totalAccepted = Student::where('status', 'Accepted')->count();
+		$totalRejected = Student::where('status', 'Rejected')->count();
+
+		$data['types'][] = [
+			'link'     => url("students"),
+			'title'    => 'Total',
+			'pending'  => $totalPending,
+			'accepted' => $totalAccepted,
+			'rejected' => $totalRejected,
 		];
+
 		return view('dashboard', $data);
 	}
 
@@ -219,4 +223,27 @@ class HomeController extends Controller
 
 		return view('students', compact('students'));
 	}
+
+	// public function updateStatus(Request $request, $id)
+	// {
+	// 	$student = Student::findOrFail($id);
+	// 	$student->status = $request->status;
+	// 	$student->save();
+
+	// 	return response()->json(['success' => true, 'message' => 'Status updated successfully']);
+	// }
+
+	public function updateStatus(Request $request, $id)
+	{
+		$student = Student::findOrFail($id);
+		$student->status = $request->status;
+		$student->save();
+
+		return response()->json([
+			'success' => true,
+			'message' => 'Status updated successfully',
+			'status' => $student->status
+		]);
+	}
+
 }
