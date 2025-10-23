@@ -224,15 +224,6 @@ class HomeController extends Controller
 		return view('students', compact('students'));
 	}
 
-	// public function updateStatus(Request $request, $id)
-	// {
-	// 	$student = Student::findOrFail($id);
-	// 	$student->status = $request->status;
-	// 	$student->save();
-
-	// 	return response()->json(['success' => true, 'message' => 'Status updated successfully']);
-	// }
-
 	public function updateStatus(Request $request, $id)
 	{
 		$student = Student::findOrFail($id);
@@ -245,5 +236,21 @@ class HomeController extends Controller
 			'status' => $student->status
 		]);
 	}
+	
+	// public function groupList()
+	// {
+	// 	$g = 'A';
+	// 	$student = Student::where('group', 'A')->get();
+	// 	$pdf = Pdf::loadView('pdf-group', ['student' => $student]);
 
+	// 	return $pdf->stream("{$g}.pdf");
+	// }
+
+	public function groupList($group)
+	{
+		$students = Student::where('group', strtoupper($group))->get();
+
+		$pdf = Pdf::loadView('pdf-group', compact('students', 'group'))->setPaper('a4', 'portrait');
+		return $pdf->stream("group_{$group}_list.pdf");
+	}
 }

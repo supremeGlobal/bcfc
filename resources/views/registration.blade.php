@@ -76,7 +76,7 @@
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary w-100">
-                                        {{ __('Save now') }}
+                                        {{ __('Save & Get Print Copy') }}
                                     </button>
                                 </div>
                             </div>
